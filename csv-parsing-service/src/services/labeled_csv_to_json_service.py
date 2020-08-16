@@ -3,8 +3,10 @@ from csv import DictReader
 
 def transform(csv_reader: DictReader) -> List[Dict]:
   fieldnames = csv_reader.fieldnames
+  labels = set()
   parsed_rows = list()
   for row in csv_reader:
+    labels.add(row['label'])
     parsed = {}
     for field in fieldnames:
       parsed[field] = row[field]
@@ -12,5 +14,6 @@ def transform(csv_reader: DictReader) -> List[Dict]:
 
   return {
     'attributes': fieldnames,
+    'labels': labels,
     'rows': parsed_rows
   }
