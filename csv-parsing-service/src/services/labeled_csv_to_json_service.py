@@ -13,7 +13,9 @@ def transform(csv_reader: DictReader) -> List[Dict]:
     parsed_rows.append(parsed)
 
   return {
-    'attributes': fieldnames,
-    'labels': labels,
-    'rows': parsed_rows
+    "file": {
+      "attributes": fieldnames,
+      "labels": list(labels),
+      "rows": parsed_rows
+    }
   }
