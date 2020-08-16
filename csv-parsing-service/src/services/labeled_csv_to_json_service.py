@@ -1,7 +1,7 @@
 from typing import List, Dict
 from csv import DictReader
 
-def transform(csv_reader: DictReader) -> List[Dict]:
+def transform(csv_reader: DictReader, filename: str) -> List[Dict]:
   fieldnames = csv_reader.fieldnames
   labels = set()
   parsed_rows = list()
@@ -13,9 +13,8 @@ def transform(csv_reader: DictReader) -> List[Dict]:
     parsed_rows.append(parsed)
 
   return {
-    "file": {
-      "attributes": fieldnames,
-      "labels": list(labels),
-      "rows": parsed_rows
-    }
+    "fileName": filename,
+    "attributes": fieldnames,
+    "labels": list(labels),
+    "rows": parsed_rows
   }
